@@ -18,15 +18,14 @@ public class MyHashMap<K, V> {
         if (myMapNode == null) {
             myMapNode = new MyMapNode<>(key, value);
             this.myLinkedList.append(myMapNode);
-        } else {
+        }
+        else {
             myMapNode.setValue(value);
         }
     }
 
     @Override
     public String toString() {
-        return "MyHashMapNodes{" + myLinkedList +
-                '}';
+        return "MyHashMapNodes{" + myLinkedList + '}';
     }
 }
-
