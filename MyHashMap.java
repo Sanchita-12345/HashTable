@@ -1,11 +1,32 @@
 package pack1;
 
-public class MyHashMap {
+public class MyHashMap<K, V> {
 
-	public static void main(Strin args[]) {
+	MyLinkedList<K> myLinkedList;
 
-		System.out.println("Welcome to the HashTable program");
+    public MyHashMap() {
+        this.myLinkedList = new MyLinkedList<>();
+    }
 
-	}
+    public V get(K key) {
+        MyMapNode<K, V> myMapNode = (MyMapNode<K, V>) this.myLinkedList.search(key);
+        return (myMapNode == null) ? null : myMapNode.getValue();
+    }
 
+    public void add(K key, V value) {
+        MyMapNode<K, V> myMapNode = (MyMapNode<K, V>) this.myLinkedList.search(key);
+        if (myMapNode == null) {
+            myMapNode = new MyMapNode<>(key, value);
+            this.myLinkedList.append(myMapNode);
+        } else {
+            myMapNode.setValue(value);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "MyHashMapNodes{" + myLinkedList +
+                '}';
+    }
 }
+
